@@ -20,6 +20,14 @@ app.engine('jsx', require('express-react-views').createEngine())
 const breadsController = require('./controllers/breads_controllers.js')
 app.use('/breads', breadsController)
 
+//MIDDLEWARE
+app.use(express.static('public'))
+
+//404 Page
+app.get('*', (req, res) => {
+    res.send('404')
+})
+
 //LISTEN
 app.listen(PORT, () => {
     console.log('nomming at port', PORT)
