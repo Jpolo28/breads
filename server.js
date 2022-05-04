@@ -20,11 +20,13 @@ app.engine('jsx', require('express-react-views').createEngine())
 const breadsController = require('./controllers/breads_controllers.js')
 app.use('/breads', breadsController)
 
+// DEPENDENCIES
+const methodOverride = require('method-override')
+
 //MIDDLEWARE
 app.use(express.static('public'))
-// MIDDLEWARE
 app.use(express.urlencoded({extended: true}))
-
+app.use(methodOverride('_method'))
 
 //404 Page
 app.get('*', (req, res) => {
