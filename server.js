@@ -22,6 +22,9 @@ app.use('/breads', breadsController)
 
 //MIDDLEWARE
 app.use(express.static('public'))
+// MIDDLEWARE
+app.use(express.urlencoded({extended: true}))
+
 
 //404 Page
 app.get('*', (req, res) => {
