@@ -8,10 +8,12 @@ function Index({ breads }) {
             {/*<p>I have {breads[0].name} bread!</p>*/}
             <ul>
                 {
-                    breads.map((breads, index) => {
-                        return (<li key={index}>
-                            <a href={`/breads/${index}`}>{breads.name}</a>
-                        </li>)
+                    breads.map((bread, index) => {
+                        return (
+                        <li key={index}>
+                            <a href={`/breads/${bread.id}`}>{bread.name}</a>
+                        </li>
+                        )
                     })
                 }
             </ul>
