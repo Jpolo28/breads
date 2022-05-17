@@ -32,6 +32,10 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
+// bakers
+const bakersController = require('./controllers/bakers_controller.js')
+app.use('/bakers', bakersController)
+
 //404 Page
 app.get('*', (req, res) => {
     res.send('404')

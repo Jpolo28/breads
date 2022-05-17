@@ -99,6 +99,8 @@ breads.get('/data/seed', (req, res) => {
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
     .then(foundBread => {
+      const bakedBy = foundBread.getBakedBy()
+      console.log(bakedBy)
       res.render('show', {
         bread: foundBread
       })
