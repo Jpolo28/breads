@@ -3,14 +3,16 @@ const req = require('express/lib/request')
 const res = require('express/lib/response')
 const breads = express.Router()
 const Bread = require('../models/breads.js')
+const Baker = require('../models/baker.js')
+
 //INDEX
 breads.get('/', (req, res) => {
   Bread.find()
     .then(foundBreads => {
-      res.render('index',{
+      res.render('index', {
         breads: foundBreads,
         title: 'Index Page'
-        })
+      })
     })
 })
 
@@ -30,7 +32,12 @@ breads.post('/', (req, res) => {
 
 // NEW
 breads.get('/new', (req, res) => {
-  res.render('new')
+  Baker.find()
+    .then(foundBakers => {
+      res.render('new', {
+        bakers: foundBakers
+      })
+    })
 })
 
 // UPDATE
@@ -56,7 +63,7 @@ breads.get('/:id/edit', (req, res) => {
         bread: foundBread
       })
     })
-  })
+})
 
 // DELETE
 breads.delete('/:id', (req, res) => {

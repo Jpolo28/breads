@@ -24,6 +24,10 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
 const breadsController = require('./controllers/breads_controllers.js')
 app.use('/breads', breadsController)
 
+// bakers 
+const bakersController = require('./controllers/bakers_controller.js')
+app.use('/bakers', bakersController)
+
 // DEPENDENCIES
 const methodOverride = require('method-override')
 
@@ -31,10 +35,6 @@ const methodOverride = require('method-override')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
-
-// bakers
-const bakersController = require('./controllers/bakers_controller.js')
-app.use('/bakers', bakersController)
 
 //404 Page
 app.get('*', (req, res) => {
